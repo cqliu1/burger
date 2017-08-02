@@ -10,6 +10,7 @@ $("#burgers-submit").on("click", function(event) {
 	$.post('/', newBurger)
 	.done(function() {
 		console.log("Inserted new burger.");
+		location.reload();
 	});
 });
 
@@ -29,6 +30,7 @@ $(".devour").on("click", function(event) {
 	    data: newBurger,
 	    success: function(result) {
 	        console.log("Devoured burger.");
+	        location.reload();
 	    }
 	});
 

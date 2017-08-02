@@ -22,7 +22,7 @@ var orm = {
   insertOne: function(burger, callback) {
     var s = "INSERT INTO " + tableName + " (burger_name, devoured) VALUES (?,?)";
     connection.query(s, [
-      burger.burger_name, burger.devoured
+      burger.burger_name, false
     ], function(err, result) {
       if(err) throw err;
       callback(result);
