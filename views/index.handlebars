@@ -1,2 +1,25 @@
-<img src="/logo.png">
-<h1>Eat-Da-Burger!</h1>
+<div class="text-center" id="header">
+	<img src="{{imgURL}}">
+	<h1>Eat-Da-Burger!</h1>
+</div>
+
+<div class="pull-left col-md-6">
+{{#each burgers}}
+	{{#unless devoured}}
+	<h2>
+		{{burger_name}} 
+		<button class="devour btn btn-lrg btn-default" id="{{id}}" data-burger="{{burger_name}}">Devour it!</button>
+	</h2>
+
+	{{/unless}}
+{{/each}}
+</div>
+
+<div class="pull-right col-md-6">
+{{#each burgers}}
+	{{#if devoured}}
+	<p class="devoured">{{burger_name}}</p>
+	{{/if}}
+{{/each}}
+</div>
+

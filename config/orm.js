@@ -21,23 +21,21 @@ var orm = {
 
   insertOne: function(burger, callback) {
     var s = "INSERT INTO " + tableName + " (burger_name, devoured) VALUES (?,?)";
-    todo.complete = todo.complete || 0;
     connection.query(s, [
       burger.burger_name, burger.devoured
     ], function(err, result) {
-
+      if(err) throw err;
       callback(result);
 
     });
   },
 
   updateOne: function(burger, callback) {
-    var s = "UPDATE " + tableName + " SET devoured=? WHERE id=?";
-
-    connection.query(s, [
-      burger.devoured, burger.id
-    ], function(err, result) {
-
+    var s = "UPDATE " + tableName + " SET devoured = true WHERE ?";
+    console.log("Devouring burger with id:",burger.id);
+    connection.query(s,
+      { id: burger.id}, function(err, result) {
+      if(err) throw err;
       callback(result);
 
     });
